@@ -3,259 +3,368 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nils BarPi — Blog</title>
-  <meta name="description" content="Récaps de semaine, entraînements, recettes et pensées." />
+  <title>Le Blog de Nils</title>
+  <meta name="description" content="Journal personnel — entraînements, recettes, récaps de semaine." />
 
-  <!-- Google Fonts : Cormorant Garant (titres) + Syne (corps) -->
+  <!--
+    FONTS :
+    - Cormorant Garant  → titres (serif élégant, inspiré editorial)
+    - DM Sans           → corps de texte (lisible, moderne, léger)
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;1,400&family=Syne:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- ═══════════════════════════════════════
+  <!-- ══════════════════════════════════════
        NAVIGATION
-  ═══════════════════════════════════════ -->
+       Transparente sur le hero, sombre après scroll
+  ══════════════════════════════════════ -->
   <nav class="nav" id="nav">
-    <a href="index.html" class="nav-logo">Nils <span>BarPi</span></a>
+    <a href="index.html" class="nav-logo">Le Blog de Nils</a>
 
-    <!-- Liens (desktop) -->
-    <ul class="nav-links" id="nav-links">
+    <ul class="nav-links">
       <li><a href="semaine/index.html">Semaine</a></li>
       <li><a href="entrainements/index.html">Entraînements</a></li>
       <li><a href="recettes/index.html">Recettes</a></li>
       <li><a href="pensees/index.html">Pensées</a></li>
     </ul>
 
-    <!-- Bouton hamburger (mobile) -->
-    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Hamburger mobile -->
+    <button class="nav-burger" id="nav-burger" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
     </button>
   </nav>
 
+  <!-- Menu mobile plein écran -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="semaine/index.html"       onclick="closeMenu()">Semaine</a>
+    <a href="entrainements/index.html" onclick="closeMenu()">Entraînements</a>
+    <a href="recettes/index.html"      onclick="closeMenu()">Recettes</a>
+    <a href="pensees/index.html"       onclick="closeMenu()">Pensées</a>
+  </div>
 
-  <!-- ═══════════════════════════════════════
-       HERO
-       → Remplace img/hero.jpg par ta photo
-  ═══════════════════════════════════════ -->
-  <section class="hero">
-    <div class="hero-bg" id="hero-bg"></div>
+
+  <!-- ══════════════════════════════════════
+       HERO — GRILLE DE PHOTOS
+       
+       3 photos en grille asymétrique :
+         · hero-1.jpg : grande photo gauche (pleine hauteur)
+         · hero-2.jpg : photo droite haute
+         · hero-3.jpg : photo droite basse
+       
+       → Place tes photos dans img/
+       → Si pas d'image, le placeholder sombre s'affiche
+  ══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+
+      <!-- Photo 1 — gauche, pleine hauteur (moitié gauche) -->
+      <div class="hero-photo">
+        <img src="img/hero-1.jpg" alt=""
+             onerror="this.parentNode.innerHTML='<div class=hero-photo-placeholder></div>'" />
+      </div>
+
+      <!-- Photo 2 — droite haut, pleine largeur de la moitié droite -->
+      <div class="hero-photo">
+        <img src="img/hero-2.jpg" alt=""
+             onerror="this.parentNode.innerHTML='<div class=hero-photo-placeholder></div>'" />
+      </div>
+
+      <!-- Photo 3 — droite bas gauche -->
+      <div class="hero-photo">
+        <img src="img/hero-3.jpg" alt=""
+             onerror="this.parentNode.innerHTML='<div class=hero-photo-placeholder></div>'" />
+      </div>
+
+      <!-- Photo 4 — droite bas droite -->
+      <div class="hero-photo">
+        <img src="img/hero-4.jpg" alt=""
+             onerror="this.parentNode.innerHTML='<div class=hero-photo-placeholder></div>'" />
+      </div>
+
+    </div><!-- /hero-grid -->
+
+    <!-- Overlays -->
     <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-      <p class="hero-eyebrow">Journal personnel</p>
-      <h1 class="hero-title">Courir, cuisiner,<br>penser, vivre.</h1>
-      <p class="hero-subtitle">
-        Un espace pour noter ce qui compte — les sorties, les semaines, les idées en vrac.
-      </p>
+    <!-- Titre -->
+    <div class="hero-title-wrap">
+      <span class="hero-label">Journal personnel</span>
+      
     </div>
 
-    <div class="hero-scroll desktop-only">Scroll</div>
+    <!-- Indicateur scroll -->
+    <div class="hero-scroll-hint">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+
+  </section><!-- /hero -->
+
+
+  <!-- ══════════════════════════════════════
+       CITATION
+       → Modifie le texte et l'auteur librement.
+       → Tu peux aussi mettre une de tes propres citations.
+       → <em> pour accentuer un mot dans l'italique.
+  ══════════════════════════════════════ -->
+  <section class="quote-section">
+    <div class="content-wrap">
+      <div class="quote-wrap">
+        <div class="quote-line"></div>
+        <div>
+          <p class="quote-text">
+            <em>To become great</em> at what we love, we must survive the moment it tests our love.
+          </p>
+          <span class="quote-author">Sam Laidlow</span>
+        </div>
+      </div>
+    </div>
   </section>
 
 
-  <!-- ═══════════════════════════════════════
-       DERNIERS ARTICLES — Section principale
-  ═══════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════
+       CONTENU PRINCIPAL
+  ══════════════════════════════════════ -->
   <main>
-    <section class="section">
-      <div class="section-header">
-        <h2 class="section-title">Derniers articles</h2>
-        <!-- Ce lien n'est pas nécessaire ici mais tu peux l'activer plus tard -->
-      </div>
+    <div class="content-wrap">
 
-      <!--
-        GRILLE 3 colonnes.
-        La première carte (.card) prend 2 colonnes automatiquement (voir CSS).
-        Pour ajouter un article : copie un bloc <article class="card">...</article>
-      -->
-      <div class="grid">
+      <!-- ──────────────────────────────────
+           RÉCAP DE LA SEMAINE
+           → Mettre à jour ce bloc chaque semaine
+      ────────────────────────────────── -->
+      <section class="section">
+        <div class="section-eyebrow">
+          <span>Récap semaine</span>
+          <a href="semaine/index.html">Tous les récaps</a>
+        </div>
 
-        <!-- ── Carte 1 (grande, 2 colonnes) ── -->
-        <article class="card" onclick="window.location='semaine/s01-2026.html'">
-          <div class="card-img-wrap">
-            <!--
-              Remplace src par le chemin de ton image.
-              Si pas d'image, supprime le <img> et décommente le placeholder en dessous.
-            -->
-            <img class="card-img" src="img/posts/s01-2026.jpg" alt="Récap semaine 1" loading="lazy" />
-            <!-- <div class="card-img-placeholder">📅</div> -->
+        <!--
+          BLOC RÉCAP SEMAINE
+          Chaque semaine, modifie :
+            · le lien href
+            · le numéro (S01, S02...)
+            · le titre
+            · l'extrait
+            · la date
+            · l'image src (ou supprime le bloc img pour le placeholder)
+        -->
+        <div class="recap-feature" onclick="window.location='semaine/s01-2026.html'">
+
+          <div class="recap-feature-img-wrap">
+            <img class="recap-feature-img"
+                 src="img/posts/s01-2026.jpg"
+                 alt="Récap semaine 1"
+                 onerror="this.parentNode.innerHTML='<div class=recap-feature-placeholder></div>'" />
           </div>
-          <div class="card-body">
-            <span class="tag">Semaine</span>
-            <h3 class="card-title">Récap semaine 1 — La reprise</h3>
-            <p class="card-excerpt">
-              Première semaine de l'année, retour progressif à l'entraînement après les fêtes.
-              Les jambes tournent bien, la tête aussi. Voici comment ça s'est passé.
+
+          <div class="recap-feature-body">
+            <span class="recap-num">Semaine 01 · 2026</span>
+            <h2 class="recap-title">La reprise — doucement mais sûrement</h2>
+            <p class="recap-excerpt">
+              Première semaine complète après les fêtes. Deux sorties running,
+              une séance de renforcement, et ce sentiment agréable que la machine
+              redémarre. Voici comment ça s'est passé.
             </p>
-            <div class="card-footer">
-              <span class="meta">5 jan. 2026</span>
-              <span class="card-arrow">↗</span>
+            <span class="recap-cta">Lire le récap</span>
+          </div>
+
+        </div>
+
+      </section><!-- /récap -->
+
+
+      <!-- ──────────────────────────────────
+           DERNIERS ARTICLES
+           → Ajoute une carte par nouvel article
+           → La première carte (span 2) = article vedette
+      ────────────────────────────────── -->
+      <section class="section">
+        <div class="section-eyebrow">
+          <span>Derniers articles</span>
+        </div>
+
+        <div class="cards-grid">
+
+          <!-- ── Article vedette (span 2 colonnes) ── -->
+          <article class="card" onclick="window.location='entrainements/premier-10km.html'">
+            <div class="card-img-wrap">
+              <img class="card-img"
+                   src="img/posts/10km.jpg"
+                   alt="Premier 10km"
+                   loading="lazy"
+                   onerror="this.parentNode.innerHTML='<div class=card-img-placeholder></div>'" />
             </div>
-          </div>
-        </article>
-
-        <!-- ── Carte 2 ── -->
-        <article class="card" onclick="window.location='entrainements/premier-10km.html'">
-          <div class="card-img-wrap">
-            <img class="card-img" src="img/posts/10km.jpg" alt="Premier 10km de l'année" loading="lazy" />
-            <!-- <div class="card-img-placeholder">🏃</div> -->
-          </div>
-          <div class="card-body">
-            <span class="tag">Entraînement</span>
-            <h3 class="card-title">Premier 10km de l'année</h3>
-            <p class="card-excerpt">
-              Sortie matinale, brume sur le lac, 10km en 51 minutes. Les sensations sont là.
-            </p>
-            <div class="card-footer">
-              <span class="meta">3 jan. 2026</span>
-              <span class="card-arrow">↗</span>
+            <div class="card-body">
+              <span class="card-tag">Entraînement</span>
+              <h3 class="card-title">Premier 10km de l'année — les jambes se souviennent</h3>
+              <p class="card-excerpt">
+                Sortie matinale par -3°C, brume sur le lac. Les jambes sont lourdes des deux premières semaines
+                de janvier mais les sensations reviennent vite. 51 minutes, 10.2km, et une envie de remettre ça.
+              </p>
+              <div class="card-meta">
+                <span class="card-date">3 jan. 2026</span>
+                <span class="card-arrow">↗</span>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- ── Carte 3 ── -->
-        <article class="card" onclick="window.location='recettes/granola-maison.html'">
-          <div class="card-img-wrap">
-            <img class="card-img" src="img/posts/granola.jpg" alt="Granola maison" loading="lazy" />
-            <!-- <div class="card-img-placeholder">🍳</div> -->
-          </div>
-          <div class="card-body">
-            <span class="tag">Recette</span>
-            <h3 class="card-title">Granola maison — la recette définitive</h3>
-            <p class="card-excerpt">
-              Après des dizaines d'essais, j'ai enfin ma recette de granola parfait. Croustillant, pas trop sucré.
-            </p>
-            <div class="card-footer">
-              <span class="meta">28 déc. 2025</span>
-              <span class="card-arrow">↗</span>
+          <!-- ── Article 2 ── -->
+          <article class="card" onclick="window.location='recettes/granola-maison.html'">
+            <div class="card-img-wrap">
+              <img class="card-img"
+                   src="img/posts/granola.jpg"
+                   alt="Granola maison"
+                   loading="lazy"
+                   onerror="this.parentNode.innerHTML='<div class=card-img-placeholder></div>'" />
             </div>
-          </div>
-        </article>
-
-        <!-- ── Carte 4 ── -->
-        <article class="card" onclick="window.location='pensees/pourquoi-je-cours.html'">
-          <div class="card-img-wrap">
-            <img class="card-img" src="img/posts/pensee.jpg" alt="Pourquoi je cours" loading="lazy" />
-            <!-- <div class="card-img-placeholder">💭</div> -->
-          </div>
-          <div class="card-body">
-            <span class="tag">Pensée</span>
-            <h3 class="card-title">Pourquoi je cours</h3>
-            <p class="card-excerpt">
-              Une question simple à laquelle je n'avais jamais vraiment répondu. Voici ma tentative.
-            </p>
-            <div class="card-footer">
-              <span class="meta">20 déc. 2025</span>
-              <span class="card-arrow">↗</span>
+            <div class="card-body">
+              <span class="card-tag">Recette</span>
+              <h3 class="card-title">Granola maison — la version définitive</h3>
+              <p class="card-excerpt">
+                Après des dizaines d'essais, la recette parfaite. Croustillant, pas trop sucré,
+                tient bien à l'effort.
+              </p>
+              <div class="card-meta">
+                <span class="card-date">28 déc. 2025</span>
+                <span class="card-arrow">↗</span>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-      </div><!-- /grid -->
-    </section>
-
-
-    <!-- ═══════════════════════════════════════
-         SECTION CATÉGORIES — liens rapides
-    ═══════════════════════════════════════ -->
-    <section class="section" style="padding-top: 0;">
-      <hr class="divider" />
-      <div class="grid grid-2">
-
-        <a href="semaine/index.html" class="card" style="text-decoration:none;">
-          <div class="card-body" style="padding: 2rem;">
-            <span class="tag">Semaine</span>
-            <h3 class="card-title" style="margin-top: 0.75rem;">Récaps hebdomadaires</h3>
-            <p class="card-excerpt">Un court bilan chaque semaine — ce qui s'est passé, comment je me suis senti, ce qui m'a marqué.</p>
-            <div class="card-footer">
-              <span class="meta">Voir tous les récaps</span>
-              <span class="card-arrow">↗</span>
+          <!-- ── Article 3 ── -->
+          <article class="card" onclick="window.location='pensees/pourquoi-je-cours.html'">
+            <div class="card-img-wrap">
+              <img class="card-img"
+                   src="img/posts/pensee.jpg"
+                   alt="Pourquoi je cours"
+                   loading="lazy"
+                   onerror="this.parentNode.innerHTML='<div class=card-img-placeholder></div>'" />
             </div>
-          </div>
-        </a>
-
-        <a href="entrainements/index.html" class="card" style="text-decoration:none;">
-          <div class="card-body" style="padding: 2rem;">
-            <span class="tag">Entraînement</span>
-            <h3 class="card-title" style="margin-top: 0.75rem;">Sorties & sessions</h3>
-            <p class="card-excerpt">Courses, vélo, natation — les détails des entraînements qui valaient la peine d'être notés.</p>
-            <div class="card-footer">
-              <span class="meta">Voir les entraînements</span>
-              <span class="card-arrow">↗</span>
+            <div class="card-body">
+              <span class="card-tag">Pensée</span>
+              <h3 class="card-title">Pourquoi je cours</h3>
+              <p class="card-excerpt">
+                Une question simple à laquelle je n'avais jamais vraiment pris le temps de répondre.
+                Voici ma tentative honnête.
+              </p>
+              <div class="card-meta">
+                <span class="card-date">20 déc. 2025</span>
+                <span class="card-arrow">↗</span>
+              </div>
             </div>
-          </div>
-        </a>
+          </article>
 
-        <a href="recettes/index.html" class="card" style="text-decoration:none;">
-          <div class="card-body" style="padding: 2rem;">
-            <span class="tag">Recette</span>
-            <h3 class="card-title" style="margin-top: 0.75rem;">Ce que je cuisine</h3>
-            <p class="card-excerpt">Les recettes qui font partie de mon quotidien, adaptées à une vie active.</p>
-            <div class="card-footer">
-              <span class="meta">Voir les recettes</span>
-              <span class="card-arrow">↗</span>
-            </div>
-          </div>
-        </a>
+          <!-- ── Article 4 ── -->
+          <!--
+            AJOUTER UN ARTICLE : copie ce bloc et modifie les infos.
+            Si tu veux 4 articles affichés, ajoute une carte ici.
+            Si tu en as 5, la grille s'adapte automatiquement (3 col).
+          -->
 
-        <a href="pensees/index.html" class="card" style="text-decoration:none;">
-          <div class="card-body" style="padding: 2rem;">
-            <span class="tag">Pensée</span>
-            <h3 class="card-title" style="margin-top: 0.75rem;">Notes & réflexions</h3>
-            <p class="card-excerpt">Des textes courts sur ce qui me traverse — sport, vie, sens, hasard.</p>
-            <div class="card-footer">
-              <span class="meta">Voir les pensées</span>
-              <span class="card-arrow">↗</span>
-            </div>
-          </div>
-        </a>
+        </div><!-- /cards-grid -->
 
-      </div>
-    </section>
-
-  </main><!-- /main -->
+      </section><!-- /derniers articles -->
 
 
-  <!-- ═══════════════════════════════════════
+      <!-- ──────────────────────────────────
+           LISTE SIMPLE — articles récents
+           → Format liste compact, tous sujets mélangés
+           → Optionnel — retire cette section si tu préfères sans
+      ────────────────────────────────── -->
+      <section class="section">
+        <div class="section-eyebrow">
+          <span>À lire aussi</span>
+        </div>
+
+        <ul class="article-list">
+
+          <!--
+            FORMAT : date | titre | catégorie
+            Pour ajouter : copie un <li> et modifie le contenu
+          -->
+          <li class="article-list-item" onclick="window.location='semaine/s02-2026.html'">
+            <span class="article-list-date">12 jan.<br>2026</span>
+            <span class="article-list-title">Semaine 02 — Le froid s'installe</span>
+            <span class="article-list-tag">Semaine</span>
+          </li>
+
+          <li class="article-list-item" onclick="window.location='entrainements/trail-raquettes.html'">
+            <span class="article-list-date">9 jan.<br>2026</span>
+            <span class="article-list-title">Première sortie trail en raquettes</span>
+            <span class="article-list-tag">Entraînement</span>
+          </li>
+
+          <li class="article-list-item" onclick="window.location='recettes/porridge-hiver.html'">
+            <span class="article-list-date">6 jan.<br>2026</span>
+            <span class="article-list-title">Porridge hivernal — flocons, banane et beurre de cacahuète</span>
+            <span class="article-list-tag">Recette</span>
+          </li>
+
+          <li class="article-list-item" onclick="window.location='pensees/nouveaux-objectifs.html'">
+            <span class="article-list-date">2 jan.<br>2026</span>
+            <span class="article-list-title">Objectifs 2026 — pas de résolutions, juste des directions</span>
+            <span class="article-list-tag">Pensée</span>
+          </li>
+
+        </ul>
+
+      </section><!-- /à lire aussi -->
+
+    </div><!-- /content-wrap -->
+  </main>
+
+
+  <!-- ══════════════════════════════════════
        FOOTER
-  ═══════════════════════════════════════ -->
+  ══════════════════════════════════════ -->
   <footer class="footer">
     <span class="footer-name">Nils BarPi</span>
-    <span class="footer-copy">© 2026 — Fait à la main avec HTML & CSS</span>
+    <span class="footer-copy">© 2026</span>
   </footer>
 
 
-  <!-- ═══════════════════════════════════════
-       JAVASCRIPT — minimal
-  ═══════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════
+       JAVASCRIPT — navigation + parallax
+  ══════════════════════════════════════ -->
   <script>
-    // ── Nav : fond sombre après scroll ──
+    // ── Nav : fond après scroll ──
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // ── Menu mobile ──
+    const burger   = document.getElementById('nav-burger');
+    const mobileNav = document.getElementById('nav-mobile');
+
+    burger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // ── Nav mobile : hamburger ──
-    const toggle = document.getElementById('nav-toggle');
-    const links  = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-    });
+    function closeMenu() {
+      mobileNav.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
 
-    // ── Hero : parallax léger ──
-    const heroBg = document.getElementById('hero-bg');
+    // ── Parallax léger sur les photos du hero ──
+    const heroPhotos = document.querySelectorAll('.hero-photo img');
     window.addEventListener('scroll', () => {
       const offset = window.scrollY;
-      if (heroBg && offset < window.innerHeight) {
-        heroBg.style.transform = `scale(1.05) translateY(${offset * 0.15}px)`;
-      }
-    });
+      if (offset > window.innerHeight) return;
+      const shift = offset * 0.12;
+      heroPhotos.forEach(img => {
+        img.style.transform = `translateY(${shift}px) scale(1.05)`;
+      });
+    }, { passive: true });
   </script>
 
 </body>

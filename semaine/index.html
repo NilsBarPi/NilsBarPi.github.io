@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Récaps de semaine — Nils BarPi</title>
+  <meta name="description" content="Un bilan court chaque semaine — ce qui s'est passé, comment je me suis senti." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="semaine.css" />
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════ -->
+  <nav class="nav scrolled" id="nav">
+    <a href="../index.html" class="nav-logo">Le Blog de Nils</a>
+    <ul class="nav-links">
+      <li><a href="../semaine/index.html" class="active">Semaine</a></li>
+      <li><a href="../entrainements/index.html">Entraînements</a></li>
+      <li><a href="../recettes/index.html">Recettes</a></li>
+      <li><a href="../pensees/index.html">Pensées</a></li>
+    </ul>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="../semaine/index.html"       onclick="closeMenu()">Semaine</a>
+    <a href="../entrainements/index.html" onclick="closeMenu()">Entraînements</a>
+    <a href="../recettes/index.html"      onclick="closeMenu()">Recettes</a>
+    <a href="../pensees/index.html"       onclick="closeMenu()">Pensées</a>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       EN-TÊTE DE PAGE
+  ══════════════════════════════════════ -->
+  <header class="cat-header">
+    <div class="cat-header-inner">
+
+      <div class="cat-header-left">
+        <a href="../index.html" class="back-link">← Accueil</a>
+        <span class="cat-eyebrow">Journal</span>
+        <h1 class="cat-title">Récaps<br><em>de semaine</em></h1>
+        <p class="cat-desc">
+          Un bilan court de chaque semaine - les sorties, l'humeur,
+          ce qui m'a marqué. Pas plus, pas moins !
+        </p>
+      </div>
+
+      <!--
+        IMAGE D'EN-TÊTE (optionnelle)
+        → Remplace src par une photo de ton choix
+        → Supprime ce bloc si tu préfères sans image
+      -->
+      <div class="cat-header-img-wrap">
+        <img src="../img/covers/semaine.jpg"
+             alt=""
+             class="cat-header-img"
+             onerror="this.parentNode.style.display='none'" />
+      </div>
+
+    </div>
+
+    <!-- Compteur -->
+    <div class="cat-header-meta">
+      <span class="cat-count" id="recap-count">- récaps</span>
+      <span class="cat-year-nav" id="year-nav"></span>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════
+       LISTE DES RÉCAPS
+       
+       AJOUTER UN RÉCAP :
+       1. Copie un bloc <article class="recap-item">
+       2. Modifie : href, numéro, titre, extrait, date, stats, image
+       3. Colle-le EN PREMIER dans la liste (plus récent en haut)
+       4. Mets à jour data-year si c'est une nouvelle année
+  ══════════════════════════════════════ -->
+  <main class="recap-list-wrap">
+
+    <!-- ─── 2026 ─────────────────────────── -->
+    <div class="year-group" data-year="2026">
+      <div class="year-label-wrap">
+        <span class="year-label">2026</span>
+      </div>
+
+      <div class="recap-list">
+
+        <!--
+          RÉCAP SEMAINE — bloc type
+          Copie/colle ce bloc pour chaque nouvelle semaine.
+          L'image est optionnelle : si le fichier n'existe pas, le placeholder s'affiche.
+        -->
+        <article class="recap-item" onclick="window.location='s02-2026.html'">
+          <div class="recap-img-wrap">
+            <img class="recap-img"
+                 src="../img/posts/s02-2026.jpg"
+                 alt="Semaine 02"
+                 loading="lazy"
+                 onerror="this.parentNode.classList.add('no-img')" />
+          </div>
+          <div class="recap-body">
+            <div class="recap-top">
+              <span class="recap-week-num">S02</span>
+              <span class="recap-date">12 jan. 2026</span>
+            </div>
+            <h2 class="recap-title">Le froid s'installe</h2>
+            <p class="recap-excerpt">
+              Semaine sous la neige, deux sorties annulées, une remplacée par une séance
+              à l'intérieur. Pas idéal mais pas de frustration. Le corps en avait besoin.
+            </p>
+            <!-- Stats rapides — optionnel, retire si pas pertinent -->
+            <ul class="recap-stats">
+              <li><span class="recap-stat-val">38</span><span class="recap-stat-key">km</span></li>
+              <li><span class="recap-stat-val">4</span><span class="recap-stat-key">sorties</span></li>
+              <li><span class="recap-stat-val">6h12</span><span class="recap-stat-key">de sport</span></li>
+            </ul>
+          </div>
+          <span class="recap-arrow">↗</span>
+        </article>
+
+        <article class="recap-item" onclick="window.location='s01-2026.html'">
+          <div class="recap-img-wrap">
+            <img class="recap-img"
+                 src="../img/posts/s01-2026.jpg"
+                 alt="Semaine 01"
+                 loading="lazy"
+                 onerror="this.parentNode.classList.add('no-img')" />
+          </div>
+          <div class="recap-body">
+            <div class="recap-top">
+              <span class="recap-week-num">S01</span>
+              <span class="recap-date">5 jan. 2026</span>
+            </div>
+            <h2 class="recap-title">La reprise — doucement mais sûrement</h2>
+            <p class="recap-excerpt">
+              Première semaine complète après les fêtes. Deux sorties running,
+              une séance de renforcement. Ce sentiment agréable que la machine redémarre.
+            </p>
+            <ul class="recap-stats">
+              <li><span class="recap-stat-val">22</span><span class="recap-stat-key">km</span></li>
+              <li><span class="recap-stat-val">2</span><span class="recap-stat-key">sorties</span></li>
+              <li><span class="recap-stat-val">3h45</span><span class="recap-stat-key">de sport</span></li>
+            </ul>
+          </div>
+          <span class="recap-arrow">↗</span>
+        </article>
+
+      </div><!-- /recap-list -->
+    </div><!-- /year-group 2026 -->
+
+
+    <!-- ─── 2025 ─────────────────────────── -->
+    <div class="year-group" data-year="2025">
+      <div class="year-label-wrap">
+        <span class="year-label">2025</span>
+      </div>
+
+      <div class="recap-list">
+
+        <article class="recap-item" onclick="window.location='s52-2025.html'">
+          <div class="recap-img-wrap">
+            <img class="recap-img"
+                 src="../img/posts/s52-2025.jpg"
+                 alt="Semaine 52"
+                 loading="lazy"
+                 onerror="this.parentNode.classList.add('no-img')" />
+          </div>
+          <div class="recap-body">
+            <div class="recap-top">
+              <span class="recap-week-num">S52</span>
+              <span class="recap-date">29 déc. 2025</span>
+            </div>
+            <h2 class="recap-title">La dernière ligne droite</h2>
+            <p class="recap-excerpt">
+              Semaine entre Noël et le Nouvel An. Pas d'entraînement structuré, beaucoup
+              de marche, beaucoup de famille. Une bonne façon de terminer l'année.
+            </p>
+            <ul class="recap-stats">
+              <li><span class="recap-stat-val">15</span><span class="recap-stat-key">km</span></li>
+              <li><span class="recap-stat-val">1</span><span class="recap-stat-key">sortie</span></li>
+              <li><span class="recap-stat-val">1h30</span><span class="recap-stat-key">de sport</span></li>
+            </ul>
+          </div>
+          <span class="recap-arrow">↗</span>
+        </article>
+
+        <article class="recap-item" onclick="window.location='s51-2025.html'">
+          <div class="recap-img-wrap">
+            <img class="recap-img"
+                 src="../img/posts/s51-2025.jpg"
+                 alt="Semaine 51"
+                 loading="lazy"
+                 onerror="this.parentNode.classList.add('no-img')" />
+          </div>
+          <div class="recap-body">
+            <div class="recap-top">
+              <span class="recap-week-num">S51</span>
+              <span class="recap-date">22 déc. 2025</span>
+            </div>
+            <h2 class="recap-title">Avant la pause — tout donner</h2>
+            <p class="recap-excerpt">
+              Dernière semaine complète avant les fêtes. Sortie longue de 2h dimanche,
+              et une session force mercredi. Le corps est prêt à souffler.
+            </p>
+            <ul class="recap-stats">
+              <li><span class="recap-stat-val">51</span><span class="recap-stat-key">km</span></li>
+              <li><span class="recap-stat-val">4</span><span class="recap-stat-key">sorties</span></li>
+              <li><span class="recap-stat-val">7h00</span><span class="recap-stat-key">de sport</span></li>
+            </ul>
+          </div>
+          <span class="recap-arrow">↗</span>
+        </article>
+
+      </div><!-- /recap-list -->
+    </div><!-- /year-group 2025 -->
+
+  </main><!-- /recap-list-wrap -->
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer" style="max-width:1180px;margin:0 auto;">
+    <span class="footer-name">Nils BarPi</span>
+    <span class="footer-copy">© 2026</span>
+  </footer>
+
+
+  <script>
+    // ── Menu mobile ──
+    const burger    = document.getElementById('nav-burger');
+    const mobileNav = document.getElementById('nav-mobile');
+    burger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    function closeMenu() {
+      mobileNav.classList.remove('open');
+      burger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Compte le nombre total de récaps ──
+    const items = document.querySelectorAll('.recap-item');
+    document.getElementById('recap-count').textContent =
+      items.length + ' récap' + (items.length > 1 ? 's' : '');
+
+    // ── Navigation par année ──
+    const years = [...document.querySelectorAll('.year-group')]
+      .map(g => g.dataset.year);
+    const yearNav = document.getElementById('year-nav');
+    years.forEach(y => {
+      const btn = document.createElement('button');
+      btn.textContent = y;
+      btn.className = 'year-btn';
+      btn.addEventListener('click', () => {
+        document.querySelector(`[data-year="${y}"]`)
+          .scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      yearNav.appendChild(btn);
+    });
+  </script>
+
+</body>
+</html>
